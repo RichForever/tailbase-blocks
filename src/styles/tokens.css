@@ -1,0 +1,17 @@
+/*
+ * Design tokens. They read the active theme's palette (theme.json presets, which the
+ * Tailbase theme defines) and fall back to fixed values, so blocks look right on any
+ * theme. Use them as `tbb:bg-primary`, `tbb:text-accent-contrast`, ...
+ */
+@theme {
+	--color-primary: var(--wp--preset--color--purple-500, #383e61);
+	--color-primary-hover: var(--wp--preset--color--purple-600, #2d324e);
+	--color-primary-contrast: var(--wp--preset--color--white-500, #ffffff);
+
+	--color-accent: var(--wp--preset--color--orange-500, #ff8811);
+	--color-accent-hover: var(--wp--preset--color--orange-600, #cc6d0e);
+	--color-accent-contrast: var(--wp--preset--color--purple-900, #0b0c13);
+
+	--color-neutral: var(--wp--preset--color--purple-100, #d7d8df);
+	--color-neutral-contrast: var(--wp--preset--color--purple-900, #0b0c13);
+}

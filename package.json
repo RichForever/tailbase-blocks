@@ -1,62 +1,45 @@
 {
-	"name": "tt-theme-blocks",
+	"name": "tailbase-blocks",
 	"version": "1.9.2",
-	"description": "Example block scaffolded with Create Block tool.",
+	"description": "Gutenberg blocks for the Tailbase theme, styled with a prefixed Tailwind CSS v4 build.",
 	"author": "MM",
 	"license": "GPL-2.0-or-later",
 	"keywords": [
 		"wordpress",
-		"theme",
+		"gutenberg",
 		"blocks",
-		"react",
-		"gutenberg"
+		"tailwind"
 	],
-	"homepage": "",
+	"homepage": "https://github.com/RichForever/tailbase-blocks",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/RichForever/tt-theme-blocks"
+		"url": "https://github.com/RichForever/tailbase-blocks"
 	},
 	"bugs": {
-		"url": "https://github.com/RichForever/tt-theme-blocks/issues"
+		"url": "https://github.com/RichForever/tailbase-blocks/issues"
 	},
-	"main": "build/index.js",
 	"lint-staged": {
 		"*.{js,jsx,ts,tsx}": "wp-scripts lint-js",
-		"*.{css,scss}": "wp-scripts lint-style --allow-empty-input",
 		"package.json": "wp-scripts lint-pkg-json"
-	},
-	"dependencies": {
-		"@codemirror/lang-css": "^6.3.1",
-		"@codemirror/lang-html": "^6.4.9",
-		"@uiw/react-codemirror": "^4.23.7",
-		"html-react-parser": "^5.2.2",
-		"lodash": "^4.17.21",
-		"postcss": "^8.5.2"
 	},
 	"devDependencies": {
 		"@commitlint/cli": "^19.7.1",
 		"@commitlint/config-conventional": "^19.7.1",
-		"@emotion/styled": "^11.14.0",
 		"@release-it/bumper": "^7.0.1",
 		"@release-it/conventional-changelog": "^10.0.0",
-		"@wordpress/data": "^10.19.0",
-		"@wordpress/scripts": "^30.12.0",
-		"classnames": "^2.5.1",
+		"@tailwindcss/postcss": "^4.3.3",
+		"@wordpress/scripts": "^36.1.0",
 		"commitizen": "^4.3.1",
 		"conventional-changelog-cli": "^5.0.0",
 		"cz-conventional-changelog": "^3.3.0",
-		"eslint-import-resolver-webpack": "^0.13.10",
-		"eslint-plugin-import": "^2.31.0",
 		"husky": "^9.1.7",
 		"lint-staged": "^15.2.11",
 		"release-it": "^18.1.2",
-		"tailwindcss": "^3.4.17"
+		"tailwindcss": "^4.3.3"
 	},
 	"scripts": {
 		"build": "wp-scripts build --webpack-copy-php",
 		"format": "wp-scripts format",
-		"lint:css": "wp-scripts lint-style",
-		"lint:css:fix": "wp-scripts lint-style --fix",
 		"lint:js": "wp-scripts lint-js",
 		"lint:js:fix": "wp-scripts lint-js --fix",
 		"lint:pkg-json": "wp-scripts lint-pkg-json",
@@ -87,8 +70,8 @@
 		},
 		"plugins": {
 			"@release-it/bumper": {
-				"in": "tt-custom-blocks.php",
-				"out": "tt-custom-blocks.php",
+				"in": "tailbase-blocks.php",
+				"out": "tailbase-blocks.php",
 				"regex": "Version:\\s*([\\d.]+)"
 			},
 			"@release-it/conventional-changelog": {

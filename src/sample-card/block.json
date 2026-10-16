@@ -1,0 +1,55 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "tailbase/sample-card",
+  "version": "1.0.0",
+  "title": "Sample Card",
+  "category": "tailbase",
+  "icon": "index-card",
+  "description": "A card with a title, text and an optional button. A starting point for new Tailbase blocks.",
+  "keywords": ["card", "tailbase", "sample"],
+  "textdomain": "tailbase-blocks",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "source": "html",
+      "selector": "h3"
+    },
+    "text": {
+      "type": "string",
+      "source": "html",
+      "selector": "p"
+    },
+    "variant": {
+      "type": "string",
+      "enum": ["primary", "accent", "neutral"],
+      "default": "primary"
+    },
+    "textAlign": {
+      "type": "string",
+      "enum": ["left", "center", "right"],
+      "default": "left"
+    },
+    "showButton": {
+      "type": "boolean",
+      "default": true
+    },
+    "buttonLabel": {
+      "type": "string",
+      "source": "html",
+      "selector": "a"
+    },
+    "buttonUrl": {
+      "type": "string",
+      "source": "attribute",
+      "selector": "a",
+      "attribute": "href"
+    }
+  },
+  "supports": {
+    "html": false,
+    "anchor": true
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css"
+}

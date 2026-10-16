@@ -1,0 +1,17 @@
+/*
+ * Shared Tailwind setup for every block of this plugin.
+ *
+ * - Only theme + utilities are imported: NO preflight (reset), so the plugin never
+ *   restyles the active theme's elements.
+ * - Every class and CSS variable is prefixed (`tbb:`), so nothing can collide with the
+ *   theme's own Tailwind build or with another plugin.
+ * - `source(none)` stops Tailwind from scanning the whole plugin: each block adds its
+ *   own `@source`, so a block's stylesheet only contains the classes that block uses.
+ * - Imported WITHOUT cascade layers on purpose. The Tailbase theme styles headings
+ *   without a layer in the block editor, which beats layered CSS. Unlayered class
+ *   selectors beat the theme's element selectors, so a block looks the same in the
+ *   editor and on the front end.
+ */
+@import "tailwindcss/theme.css" prefix(tbb);
+@import "tailwindcss/utilities.css" prefix(tbb) source(none);
+@import "./tokens.css";
