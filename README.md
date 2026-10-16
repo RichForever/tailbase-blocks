@@ -18,16 +18,18 @@ Then activate **Tailbase Blocks** in Plugins. The blocks appear in the **Tailbas
 ## Structure
 
 ```
-tailbase-blocks.php           registers every build/<block>/block.json + the "Tailbase" block category
+tailbase-blocks.php           registers every build/<block>/block.json, the "Tailbase" block category and
+                              enqueues build/global-styles.css
+webpack.config.js             wp-scripts config + the extra `global-styles` entry
 src/
   styles/tailwind.css         shared Tailwind setup (prefixed, no reset, no layers)
+  styles/global-styles.css    THE stylesheet with every utility of every block -> build/global-styles.css
   styles/tokens.css           design tokens (colors) that read the theme's palette
   <block>/
     block.json
-    index.js                  registerBlockType + imports style.css
+    index.js                  registerBlockType
     edit.js / save.js         editor UI / saved markup
     classes.js                every Tailwind class of the block (complete strings)
-    style.css                 imports the shared setup and scans only this block's folder
     controls/                 block controls: one file per control, rendered in controls/index.js
 build/<block>/                webpack output (git-ignored)
 ```
@@ -38,8 +40,14 @@ build/<block>/                webpack output (git-ignored)
   collide with the theme's Tailwind classes.
 - **No reset (preflight)**: the plugin never restyles the theme's elements. Set margins, sizes and colors on your
   markup explicitly (for example `tbb:m-0` on a heading).
-- **Own file per block**: `style.css` of each block scans only its own folder (`@source "./"`), so a block's CSS
-  contains only the classes that block uses (about 3.6 KB for Sample Card).
+- **One utility stylesheet**: `src/styles/global-styles.css` scans the whole `src/` folder (`@source "../"`) and
+  writes every class the blocks use into `build/global-styles.css`. The plugin enqueues it on the front end and in the
+  editor (`enqueue_block_assets`). It is one file on purpose: with a copy per block, the same class lives in several
+  stylesheets and, when two blocks share a page, the cascade depends on load order (e.g. `col-span-full` from one block
+  overriding `xl:col-span-4` from another). One file keeps base classes before their breakpoint variants.
+- **`space-*` / `divide-*` overrides**: Tailwind v4 emits them with `:where()` (zero specificity), so theme/editor
+  rules such as `p { margin: 0 }` beat them. `tailwind.css` redefines them with normal specificity; keep using the
+  normal class names.
 - **Unlayered CSS on purpose**: the Tailbase theme styles headings without a cascade layer in the block editor.
   Unlayered class selectors win over those element selectors, so blocks look the same in the editor and on the
   front end.
@@ -64,9 +72,8 @@ It is not written by hand. Tailwind generates it from a token:
    `border-primary`, ...). Only the name `primary` is ours.
 2. **The prefix is added** by `prefix(tbb)` in `src/styles/tailwind.css`: the class becomes `tbb:bg-primary` and the
    variable becomes `--tbb-color-primary`.
-3. **The class is generated only if it is found.** The block's `style.css` has `@source "./"`, so Tailwind scans that
-   block's folder, finds the string `'tbb:bg-primary'` (in `classes.js`) and writes this into
-   `build/<block>/style-index.css`:
+3. **The class is generated only if it is found.** `global-styles.css` has `@source "../"`, so Tailwind scans `src/`,
+   finds the string `'tbb:bg-primary'` (in `classes.js`) and writes this into `build/global-styles.css`:
    ```css
    .tbb\:bg-primary { background-color: var(--tbb-color-primary); }
    :root, :host { --tbb-color-primary: var(--wp--preset--color--purple-500, #383e61); }
@@ -85,9 +92,14 @@ not use.
 ## Add a new block
 
 1. Copy `src/sample-card` to `src/<your-block>` and edit `block.json` (`name`, `title`, attributes).
-2. Keep `style.css` as it is: it imports the shared setup and scans only the new folder.
+2. Write the block's classes as complete strings with the `tbb:` prefix (see `classes.js`). They are picked up
+   automatically, because `global-styles.css` scans all of `src/`.
 3. Put controls in `src/<your-block>/controls/` and render them from `controls/index.js`.
-4. Run `npm run build`. No PHP change is needed, because the plugin registers every `build/*/block.json`.
+4. Need CSS that is not a utility (e.g. a selector for markup you don't control)? Add a `style.css` to the block
+   that starts with `@reference "../styles/tailwind.css";` and uses `@apply tbb:...`. Import it in `index.js` and add
+   `"style": "file:./style-index.css"` to `block.json`. Use `@reference`, not `@import`, so utilities are not
+   duplicated.
+5. Run `npm run build`. No PHP change is needed, because the plugin registers every `build/*/block.json`.
 
 ## Releasing
 

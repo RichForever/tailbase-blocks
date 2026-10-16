@@ -1,0 +1,9 @@
+/*
+ * The one stylesheet with every Tailwind utility the blocks use (front end + editor).
+ * Utilities live in a single file on purpose: with a copy per block, the same class in
+ * two stylesheets makes the cascade depend on load order (e.g. `col-span-full` from one
+ * block overriding `xl:col-span-4` from another).
+ */
+@import "./tailwind.css";
+
+@source "../";

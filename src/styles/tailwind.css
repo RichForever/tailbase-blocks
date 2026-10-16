@@ -15,3 +15,50 @@
 @import "tailwindcss/theme.css" prefix(tbb);
 @import "tailwindcss/utilities.css" prefix(tbb) source(none);
 @import "./tokens.css";
+
+/*
+ * Tailwind v4 emits `space-*` and `divide-*` as `:where(.x > :not(:last-child))`, which has
+ * zero specificity and loses to any theme/editor rule that sets margins or borders on
+ * children (e.g. `p { margin: 0 }`). These versions keep the normal specificity v3 had.
+ */
+@utility space-y-* {
+	& > :not(:last-child) {
+		margin-block-end: --spacing(--value(integer));
+	}
+}
+
+@utility space-x-* {
+	& > :not(:last-child) {
+		margin-inline-end: --spacing(--value(integer));
+	}
+}
+
+@utility divide-x {
+	& > :not(:last-child) {
+		border-inline-end: 1px solid;
+	}
+}
+
+@utility divide-y {
+	& > :not(:last-child) {
+		border-block-end: 1px solid;
+	}
+}
+
+@utility divide-x-0 {
+	& > :not(:last-child) {
+		border-inline-end-width: 0;
+	}
+}
+
+@utility divide-y-0 {
+	& > :not(:last-child) {
+		border-block-end-width: 0;
+	}
+}
+
+@utility divide-* {
+	& > :not(:last-child) {
+		border-color: --value(--color-*, [color]);
+	}
+}

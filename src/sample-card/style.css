@@ -1,7 +1,0 @@
-/*
- * Styles of this block: the shared prefixed Tailwind setup, scanning only this folder.
- * Loaded on the front end and inside the editor.
- */
-@import "../styles/tailwind.css";
-
-@source "./";

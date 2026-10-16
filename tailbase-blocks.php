@@ -43,3 +43,21 @@ function tailbase_blocks_register_category( $categories ) {
 	);
 }
 add_filter( 'block_categories_all', 'tailbase_blocks_register_category' );
+
+/**
+ * Loads the single stylesheet with every Tailwind utility the blocks use, on the front
+ * end and in the editor.
+ */
+function tailbase_blocks_enqueue_styles() {
+	$file = __DIR__ . '/build/global-styles.css';
+
+	if ( file_exists( $file ) ) {
+		wp_enqueue_style(
+			'tailbase-blocks-global-styles',
+			plugins_url( 'build/global-styles.css', __FILE__ ),
+			array(),
+			filemtime( $file )
+		);
+	}
+}
+add_action( 'enqueue_block_assets', 'tailbase_blocks_enqueue_styles' );
