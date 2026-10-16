@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.10.1](https://github.com/RichForever/tailbase-blocks/compare/1.10.0...1.10.1) (2026-10-16)
+
+### 🏗 Build System
+
+* update dependencies ([7afced7](https://github.com/RichForever/tailbase-blocks/commit/7afced7d75e32b246f6007ac68ed97794816af25))
+
 ## [1.10.0](https://github.com/RichForever/tailbase-blocks/compare/1.9.2...1.10.0) (2026-10-16)
 
 ### 🚀 Features

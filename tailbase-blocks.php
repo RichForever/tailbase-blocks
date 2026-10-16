@@ -2,7 +2,7 @@
 /**
  * Plugin Name:       Tailbase Blocks
  * Description:       Gutenberg blocks for the Tailbase theme. Ships its own prefixed Tailwind CSS build, so it never conflicts with the theme's styles.
- * Version:           1.10.0
+ * Version:           1.10.1
  * Requires at least: 6.5
  * Requires PHP:      8.0
  * Author:            MM
