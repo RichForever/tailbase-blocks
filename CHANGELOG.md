@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.10.3](https://github.com/RichForever/tailbase-blocks/compare/1.10.2...1.10.3) (2026-10-16)
+
+### ♻️ Refactoring
+
+* change approach for styles handling ([05c3268](https://github.com/RichForever/tailbase-blocks/commit/05c3268e5395a347c1e48d8f55d121af00a3f060))
+
 ## [1.10.2](https://github.com/RichForever/tailbase-blocks/compare/1.10.1...1.10.2) (2026-10-16)
 
 ### 🏗 Build System
