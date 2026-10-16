@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.10.0](https://github.com/RichForever/tailbase-blocks/compare/1.9.2...1.10.0) (2026-10-16)
+
+### 🚀 Features
+
+* change name of the plugin, use tailwind v4 instead of v3 ([c0d3bdd](https://github.com/RichForever/tailbase-blocks/commit/c0d3bdd618a82446c78bd4cb5c0c92f36eac0f7e))
+
 ## [1.9.2](https://github.com/RichForever/tt-theme-blocks/compare/1.9.1...1.9.2) (2025-06-06)
 
 ### ♻️ Refactoring
