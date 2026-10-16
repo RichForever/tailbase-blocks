@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.10.2](https://github.com/RichForever/tailbase-blocks/compare/1.10.1...1.10.2) (2026-10-16)
+
+### 🏗 Build System
+
+* disable github release ([0a64708](https://github.com/RichForever/tailbase-blocks/commit/0a64708dc17bf33bead2fd86ea7182d4d4050afe))
+
 ## [1.10.1](https://github.com/RichForever/tailbase-blocks/compare/1.10.0...1.10.1) (2026-10-16)
 
 ### 🏗 Build System
