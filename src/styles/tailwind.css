@@ -5,8 +5,8 @@
  *   restyles the active theme's elements.
  * - Every class and CSS variable is prefixed (`tbb:`), so nothing can collide with the
  *   theme's own Tailwind build or with another plugin.
- * - `source(none)` stops Tailwind from scanning the whole plugin: each block adds its
- *   own `@source`, so a block's stylesheet only contains the classes that block uses.
+ * - `source(none)` stops Tailwind from scanning on its own: `global-styles.css` adds the
+ *   one `@source` for the whole `src/` folder.
  * - Imported WITHOUT cascade layers on purpose. The Tailbase theme styles headings
  *   without a layer in the block editor, which beats layered CSS. Unlayered class
  *   selectors beat the theme's element selectors, so a block looks the same in the
@@ -15,50 +15,3 @@
 @import "tailwindcss/theme.css" prefix(tbb);
 @import "tailwindcss/utilities.css" prefix(tbb) source(none);
 @import "./tokens.css";
-
-/*
- * Tailwind v4 emits `space-*` and `divide-*` as `:where(.x > :not(:last-child))`, which has
- * zero specificity and loses to any theme/editor rule that sets margins or borders on
- * children (e.g. `p { margin: 0 }`). These versions keep the normal specificity v3 had.
- */
-@utility space-y-* {
-	& > :not(:last-child) {
-		margin-block-end: --spacing(--value(integer));
-	}
-}
-
-@utility space-x-* {
-	& > :not(:last-child) {
-		margin-inline-end: --spacing(--value(integer));
-	}
-}
-
-@utility divide-x {
-	& > :not(:last-child) {
-		border-inline-end: 1px solid;
-	}
-}
-
-@utility divide-y {
-	& > :not(:last-child) {
-		border-block-end: 1px solid;
-	}
-}
-
-@utility divide-x-0 {
-	& > :not(:last-child) {
-		border-inline-end-width: 0;
-	}
-}
-
-@utility divide-y-0 {
-	& > :not(:last-child) {
-		border-block-end-width: 0;
-	}
-}
-
-@utility divide-* {
-	& > :not(:last-child) {
-		border-color: --value(--color-*, [color]);
-	}
-}
