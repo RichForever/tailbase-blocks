@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.10.4](https://github.com/RichForever/tailbase-blocks/compare/1.10.3...1.10.4) (2026-10-20)
+
+### 📝 Documentation
+
+* update readme file ([1c0c8d0](https://github.com/RichForever/tailbase-blocks/commit/1c0c8d05fe82eb3e4e3c24f5f7e9a5ef31a266e4))
+
+### ♻️ Refactoring
+
+* remove unused code ([4a66a7c](https://github.com/RichForever/tailbase-blocks/commit/4a66a7c45c24c276ea0416823c55cd45173a865e))
+
 ## [1.10.3](https://github.com/RichForever/tailbase-blocks/compare/1.10.2...1.10.3) (2026-10-16)
 
 ### ♻️ Refactoring
