@@ -3,6 +3,6 @@
 $d = [];
 ?>
 
-<div class="text-gray-700 shadow-md p-3 border-gray-300 ml-4 h-24 flex border-2">
+<div class="tbb:p-4 tbb:pt-2">
 	<?php echo $d; ?>
 </div>
