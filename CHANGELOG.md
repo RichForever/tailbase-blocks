@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.10.5](https://github.com/RichForever/tailbase-blocks/compare/1.10.4...1.10.5) (2026-10-22)
+
+### 🧪 Tests
+
+* remove test file ([63ea243](https://github.com/RichForever/tailbase-blocks/commit/63ea243a9a7215e4a363aa5ae1c0673193b14692))
+* test ([6cf4daa](https://github.com/RichForever/tailbase-blocks/commit/6cf4daacd7b423e8b5bfe72fa2f99ca094af03da))
+* test for prettier ([917d989](https://github.com/RichForever/tailbase-blocks/commit/917d989facd066b8c18c456419c5dfb82abbcf0b))
+
+### 🏗 Build System
+
+* add tailwind prettier sorting ([7462085](https://github.com/RichForever/tailbase-blocks/commit/746208534cb96679966896c7a395397f22c987c7))
+
 ## [1.10.4](https://github.com/RichForever/tailbase-blocks/compare/1.10.3...1.10.4) (2026-10-20)
 
 ### 📝 Documentation
