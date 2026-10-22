@@ -19,7 +19,12 @@
 		"url": "https://github.com/RichForever/tailbase-blocks/issues"
 	},
 	"lint-staged": {
-		"*.{js,jsx,ts,tsx}": "wp-scripts lint-js",
+		"*.{js,jsx,ts,tsx}": [
+			"wp-scripts lint-js --fix",
+			"prettier --write"
+		],
+		"*.css": "prettier --write",
+		"*.php": "tailwind-sort-php",
 		"package.json": "wp-scripts lint-pkg-json"
 	},
 	"devDependencies": {
@@ -27,18 +32,22 @@
 		"@commitlint/config-conventional": "^21.2.3",
 		"@release-it/bumper": "^8.0.1",
 		"@release-it/conventional-changelog": "^12.0.2",
+		"@runtimestudio/tailwind-sort-php": "^0.4.0",
 		"@tailwindcss/postcss": "^4.3.3",
 		"@wordpress/scripts": "^36.1.0",
 		"commitizen": "^4.3.1",
 		"cz-conventional-changelog": "^3.3.0",
 		"husky": "^9.1.7",
 		"lint-staged": "^17.6.0",
+		"prettier-plugin-tailwindcss": "^0.8.1",
 		"release-it": "^21.1.1",
 		"tailwindcss": "^4.3.3"
 	},
 	"scripts": {
 		"build": "wp-scripts build --webpack-copy-php",
 		"format": "wp-scripts format",
+		"prettier:check": "prettier . --check",
+		"prettier:write": "prettier . --write",
 		"lint:js": "wp-scripts lint-js",
 		"lint:js:fix": "wp-scripts lint-js --fix",
 		"lint:pkg-json": "wp-scripts lint-pkg-json",
@@ -47,7 +56,9 @@
 		"start": "wp-scripts start --webpack-copy-php",
 		"release": "release-it",
 		"commit": "cz",
-		"prepare": "husky"
+		"prepare": "husky",
+		"tailwind:sort": "tailwind-sort-php",
+		"tailwind:sort:check": "tailwind-sort-php --check"
 	},
 	"config": {
 		"commitizen": {
